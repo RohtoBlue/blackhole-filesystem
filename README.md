@@ -1,170 +1,64 @@
-Archive and Encryption Script Manual
+Folder Encryption/Decryption Script
+This Bash script allows you to archive and encrypt a folder into an .mp4 file or decrypt an encrypted .mp4 file back into its original folder structure. The script uses tar for archiving and openssl for AES-256-CBC encryption. Additionally, this README provides instructions for leveraging a Google Pixel (1st Edition) to upload these encrypted files to Google Drive and Google Photos for effectively unlimited cloud storage of up to 10GB per file.
 
-Overview
-
-This Bash script allows users to either archive and encrypt a folder into a single encrypted file (disguised as an .mp4) or decrypt and extract an encrypted file back into its original folder structure. It uses tar for archiving and openssl for encryption/decryption with AES-256-CBC encryption.
-
-- Encryption Mode: Archives a folder into a .tar file, encrypts it with a user-provided password, and outputs it as a file with an _e.mp4 suffix.
-    
-- Decryption Mode: Decrypts an _e.mp4 file using the original password and extracts its contents into a folder.
-    
-
-The script also generates a folder structure listing for encrypted files to help users remember the contents.
-
----
-
-Requirements
-
-- Operating System: Linux, macOS, or any Unix-like system with Bash.
-    
-- Dependencies:
-    
-    - bash: The script interpreter.
-        
-    - tar: For creating and extracting archives.
-        
-    - openssl: For AES-256-CBC encryption and decryption.
-        
-    - tree (optional): For a clean folder structure display in encryption mode. If not installed, the script falls back to ls -R.
-        
-- Permissions: The user must have read/write access to the folder/file paths provided.
-    
-
-To install missing dependencies on Debian/Ubuntu:
-
-bash
-
-```bash
-sudo apt update
-sudo apt install tar openssl tree
-```
-
-On macOS (via Homebrew):
-
-bash
-
-```bash
-brew install openssl tree
-```
-
----
-
+Features
+Encryption: Archive a folder into a .tar file and encrypt it as an .mp4 file with a password.
+Decryption: Decrypt an _e.mp4 file back into a .tar archive and extract its contents.
+Folder Structure Listing: Displays the folder structure during encryption (requires the tree command for a clean output; falls back to ls -R if unavailable).
+Cloud Storage: Instructions for uploading encrypted files to Google Drive/Google Photos using a Google Pixel (1st Edition) for unlimited storage.
+Prerequisites
+Linux/Unix Environment: The script requires a Bash-compatible system (e.g., Linux, macOS, WSL on Windows).
+Installed Tools:
+tar: For archiving folders.
+openssl: For encryption and decryption.
+tree (optional): For a detailed folder structure listing (install with sudo apt install tree on Debian/Ubuntu or equivalent).
+Google Pixel (1st Edition): For the unlimited storage workaround (optional).
 Usage
-
-1. Save the script to a file, e.g., archive_encrypt.sh.
-    
-2. Make it executable:
-    
-    bash
-    
-    ```bash
-    chmod +x archive_encrypt.sh
-    ```
-    
-3. Run the script:
-    
-    bash
-    
-    ```bash
-    ./archive_encrypt.sh
-    ```
-    
-
-Options
-
-The script prompts the user to choose between two modes:
-
-- 1: Encrypt a folder.
-    
-- 2: Decrypt a file.
-    
-
-Encryption Mode (Choice 1)
-
-1. Input:
-    
-    - Full path to the folder you want to encrypt (e.g., /home/user/my_folder).
-        
-    - A secure password (entered twice for confirmation).
-        
-2. Process:
-    
-    - Creates a .tar archive of the folder.
-        
-    - Encrypts the .tar file using AES-256-CBC with the provided password.
-        
-    - Saves the encrypted file with a name like <folder_name>_<timestamp>_e.mp4.
-        
-    - Deletes the temporary .tar file.
-        
-3. Output:
-    
-    - Displays the encrypted filename, password, and folder structure.
-        
-
-Decryption Mode (Choice 2)
-
-1. Input:
-    
-    - Full path to the encrypted _e.mp4 file (e.g., /home/user/my_folder_20250309_163630_e.mp4).
-        
-    - The password used during encryption.
-        
-2. Process:
-    
-    - Decrypts the _e.mp4 file to a .tar archive using the provided password.
-        
-    - Extracts the .tar archive to restore the original folder.
-        
-    - Deletes the temporary .tar file.
-        
-3. Output:
-    
-    - Confirms successful decryption and extraction.
-        
-
----
-
-Script Workflow
-
-Encryption Mode
-
-1. Prompts for folder path and validates its existence.
-    
-2. Generates a timestamped .tar archive (e.g., my_folder_20250309_163630.tar).
-    
-3. Optionally uses tree (or ls -R as fallback) to list folder contents.
-    
-4. Prompts for and confirms a password (input hidden for security).
-    
-5. Encrypts the .tar file to <folder_name>_<timestamp>_e.mp4.
-    
-6. Outputs metadata (filename, password, folder structure).
-    
-
-Decryption Mode
-
-1. Prompts for the encrypted file path and validates its existence.
-    
-2. Prompts for the decryption password (input hidden).
-    
-3. Decrypts the file to a .tar archive.
-    
-4. Extracts the .tar to restore the folder.
-    
-5. Confirms success.
-    
-
----
-
-Example Usage
-
-Encrypting a Folder
-
+Make the Script Executable:
 bash
 
-```bash
-$ ./archive_encrypt.sh
+Collapse
+
+Wrap
+
+Copy
+chmod +x script.sh
+Run the Script:
+bash
+
+Collapse
+
+Wrap
+
+Copy
+./script.sh
+Choose an Option:
+Enter 1 to encrypt a folder.
+Enter 2 to decrypt an encrypted .mp4 file.
+Encryption Process
+Provide the full path to the folder you want to encrypt (e.g., /home/user/myfolder).
+Enter and confirm a secure password.
+The script will:
+Create a .tar archive of the folder.
+Encrypt it into a file named <foldername>_<timestamp>_e.mp4.
+Display the filename, password, and folder structure.
+Delete the temporary .tar file.
+Decryption Process
+Provide the full path to the _e.mp4 file (e.g., /home/user/myfolder_20250310_123456_e.mp4).
+Enter the password used during encryption.
+The script will:
+Decrypt the .mp4 file into a .tar archive.
+Extract the contents into the current directory.
+Delete the temporary .tar file.
+Example Output
+Encryption
+plaintext
+
+Collapse
+
+Wrap
+
+Copy
 Do you want to (1) encrypt a folder or (2) decrypt a file? Enter 1 or 2:
 1
 Please enter the full path to the folder you want to archive:
@@ -178,99 +72,68 @@ Please confirm your password:
 Encrypting archive...
 Encryption successful!
 Details:
-  "Filename": "documents_20250309_163630_e.mp4"
-  "Password": "mypassword123"
+  "Filename": "documents_20250310_123456_e.mp4"
+  "Password": "mysecretpassword"
   "Folder Contents":
     documents/
     ├── file1.txt
-    └── file2.jpg
-```
+    ├── file2.pdf
+    └── subfolder/
+        └── file3.doc
+Decryption
+plaintext
 
-Decrypting a File
+Collapse
 
-bash
+Wrap
 
-```bash
-$ ./archive_encrypt.sh
+Copy
 Do you want to (1) encrypt a folder or (2) decrypt a file? Enter 1 or 2:
 2
 Please enter the full path to the _e.mp4 file you want to decrypt:
-/home/user/documents_20250309_163630_e.mp4
+/home/user/documents_20250310_123456_e.mp4
 Please enter the password used to encrypt this file:
 [hidden input]
 Decrypting file...
 Extracting archive...
 Decryption and extraction successful!
-```
+Uploading to Google Drive and Google Photos (Unlimited Storage Workaround)
+Using a Google Pixel (1st Edition), you can upload encrypted .mp4 files (up to 10GB each) to Google Drive and Google Photos without consuming your storage quota, effectively providing unlimited cloud storage in 10GB blocks. Here's how:
 
----
-
-Output Format
-
-- Encryption Mode: Custom format with key-value pairs and a tree-like folder structure:
-    
-    ```text
-    "Filename": "<folder_name>_<timestamp>_e.mp4"
-    "Password": "<user-provided-password>"
-    "Folder Contents":
-      <folder_name>/
-      ├── <file1>
-      └── <file2>
-    ```
-    
-- Decryption Mode: Simple success message or error if the password/file is invalid.
-    
-
----
-
-Error Handling
-
-- Invalid Choice: Exits if the user enters something other than 1 or 2.
-    
-- Non-Existent Folder/File: Exits with an error message.
-    
-- Password Mismatch: Deletes the .tar file and exits.
-    
-- Failed Tar/Encryption/Decryption: Cleans up temporary files and exits with an error message.
-    
-
----
-
-Security Notes
-
-- Password Visibility: Password input is hidden using stty -echo.
-    
-- Encryption: Uses AES-256-CBC with a salt for strong security.
-    
-- File Cleanup: Removes temporary .tar files to avoid leaving unencrypted data.
-    
-- Caution: The password is displayed in the encryption output. Avoid sharing this output publicly.
-    
-
----
-
-Limitations
-
-- Requires tar and openssl to be installed.
-    
-- The .mp4 suffix is a disguise; the file isn’t a playable video.
-    
-- Older systems without tree will get a less readable folder listing.
-    
-- No option to overwrite existing files; users must manually manage duplicates.
-    
-
----
-
+Requirements
+Google Pixel (1st Edition) phone.
+Google Drive and Google Photos apps installed and signed in.
+Encrypted .mp4 files (e.g., myfolder_20250310_123456_e.mp4) transferred to the phone (via USB, email, etc.).
+Steps
+Transfer Files to the Phone:
+Connect your Google Pixel (1st Edition) to your computer via USB.
+Copy the encrypted .mp4 files (up to 10GB each) to the phone’s internal storage (e.g., in the Downloads folder).
+Open the Files App:
+On your Google Pixel, open the built-in Files app.
+Navigate to the File:
+Locate the encrypted .mp4 file (e.g., in the Downloads folder).
+Upload to Google Drive:
+Long-press the .mp4 file and tap the Share icon.
+Select Google Drive from the share options.
+Choose a folder in Google Drive (or create a new one) and tap Save.
+Wait for the upload to complete (ensure a stable internet connection).
+Upload to Google Photos:
+Open the Google Photos app on your Pixel.
+Tap the + button (or Upload option).
+Navigate to the Downloads folder (or wherever you stored the .mp4 file) using the file picker.
+Select the .mp4 file and tap Upload.
+Because this is a Google Pixel (1st Edition), the upload will not count toward your Google storage quota (even though it’s not a typical video).
+Verify Storage:
+Check your Google Drive and Google Photos storage at myaccount.google.com/storage. The uploaded .mp4 files should not deduct from your quota.
+Notes
+File Size Limit: Each .mp4 file must be ≤10GB to upload successfully via this method.
+Security: The files remain encrypted, so they’re secure in the cloud. Keep your password safe!
+Accessing Files: To retrieve the files, download them from Google Drive or Google Photos to your computer and decrypt them using this script.
 Troubleshooting
-
-- "tree: command not found": Install tree or accept the ls -R fallback.
-    
-- "openssl: command not found": Install openssl.
-    
-- "Decryption failed": Check the password or file integrity.
-    
-- Permission denied: Run with sudo if needed, or adjust file permissions.
-    
-
----
+"tree" Command Missing: Install it (sudo apt install tree) or use the fallback ls -R output.
+Encryption/Decryption Fails: Ensure openssl is installed (sudo apt install openssl) and the password is correct.
+Upload Issues: Verify your internet connection and ensure the file size is ≤10GB.
+Security Considerations
+Use a strong, unique password for encryption.
+Store passwords securely (e.g., in a password manager).
+The .mp4 extension is a disguise; these files are not playable videos but encrypted archives.
