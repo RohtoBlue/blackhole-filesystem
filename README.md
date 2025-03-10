@@ -100,7 +100,7 @@ Decryption and extraction successful!
 
 ## Uploading to Google Drive and Google Photos (Unlimited Storage Workaround)
 
-Using a **Google Pixel (1st Edition)**, you can upload encrypted .mp4 files (up to 10GB each) to Google Drive and Google Photos without consuming your storage quota, effectively providing unlimited cloud storage in 10GB blocks. Here's how:
+Using a **Google Pixel (1st Edition)**, you can upload encrypted .mp4 files (up to 10GB each) to Google Photos without consuming your storage quota, effectively providing unlimited cloud storage in 10GB blocks. Here's how:
 
 ### Requirements
 
@@ -110,26 +110,38 @@ Using a **Google Pixel (1st Edition)**, you can upload encrypted .mp4 files (up 
 
 ### Steps
 
-1. **Transfer Files to the Phone**:
-    - Connect your Google Pixel (1st Edition) to your computer via USB.
-    - Copy the encrypted .mp4 files (up to 10GB each) to the phone’s internal storage (e.g., in the Downloads folder).
-2. **Open the Files App**:
-    - On your Google Pixel, open the built-in **Files** app.
-3. **Navigate to the File**:
-    - Locate the encrypted .mp4 file (e.g., in the Downloads folder).
-4. **Upload to Google Drive**:
-    - Long-press the .mp4 file and tap the **Share** icon.
-    - Select **Google Drive** from the share options.
-    - Choose a folder in Google Drive (or create a new one) and tap **Save**.
-    - Wait for the upload to complete (ensure a stable internet connection).
-5. **Upload to Google Photos**:
+1. **Upload the Encrypted File to Google Drive**:
+    - From a PC or the Google Pixel (1st Edition), upload the encrypted .mp4 file (up to 10GB) to Google Drive. Note: This will initially use your storage quota.
+    - On a PC: Visit [drive.google.com](https://drive.google.com), sign in, and drag the file or use the **+ New** button to upload.
+    - On the Pixel: Open the Google Drive app, tap **+**, select **Upload**, and choose the file from your device.
+2. **Open the Files App on the Google Pixel**:
+    - On your Google Pixel (1st Edition), open the built-in **Files** app.
+3. **Access Google Drive via the Files App**:
+    - Tap the hamburger menu (three horizontal lines) in the top-left corner.
+    - Select **Google Drive** from the menu to view your Drive files.
+4. **Select the Encrypted .mp4 File**:
+    - Locate and press-and-hold the encrypted .mp4 file you uploaded (e.g., myfolder_20250310_123456_e.mp4).
+5. **Share the File**:
+    - Tap the **Share** button that appears in the options.
+6. **Upload to Google Photos**:
+    - From the share options, select **Google Photos** or **Upload to Photos** (wording may vary slightly).
+    - Confirm the upload to Google Photos.
+7. **Wait for Upload Completion**:
+    - Allow time for the upload to finish. Larger files (e.g., close to 10GB) may take longer depending on your internet speed.
+8. **Delete the File from Google Drive**:
+    - After the .mp4 is successfully uploaded to Google Photos, go to Google Drive (via the app or [drive.google.com](https://drive.google.com)).
+    - Locate the .mp4 file, select it, and delete it to reclaim your storage quota.
+    - Because it was uploaded to Google Photos via a Pixel (1st Edition), it won’t count against your Photos storage.
+9. **Organize in Google Photos**:
     - Open the **Google Photos** app on your Pixel.
-    - Tap the **+** button (or **Upload** option).
-    - Navigate to the Downloads folder (or wherever you stored the .mp4 file) using the file picker.
-    - Select the .mp4 file and tap **Upload**.
-    - Because this is a Google Pixel (1st Edition), the upload will not count toward your Google storage quota (even though it’s not a typical video).
-6. **Verify Storage**:
-    - Check your Google Drive and Google Photos storage at [myaccount.google.com/storage](https://myaccount.google.com/storage). The uploaded .mp4 files should not deduct from your quota.
+    - Find the uploaded .mp4 file and add it to a new album (e.g., named "Filesystem").
+    - Tap the file, then tap **Add to album**, and create/select the "Filesystem" album.
+10. **Archive the File**:
+    - In Google Photos, select the .mp4 file, tap the three-dot menu, and choose **Archive**.
+    - This removes it from your main Photos view and excludes it from search, keeping your regular photo album uncluttered.
+11. **Retrieve the Files (If Needed)**:
+    - To download the encrypted .mp4 later, visit [photos.google.com/unsupportedvideos](https://photos.google.com/unsupportedvideos) on any device.
+    - Locate your archived .mp4 file, select it, and download it to your computer for decryption using this script.
 
 ### Notes
 
